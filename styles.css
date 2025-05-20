@@ -1,0 +1,413 @@
+/* reset styles for consistent rendering */
+* {
+  /* reset margins and padding */
+  margin: 0;
+  padding: 0;
+  /* include padding and border in element's total width and height */
+  box-sizing: border-box;
+}
+/* make images responsive to parent container */
+img {
+  max-width: 100%;/* set maximum width to parent container */
+  height: auto;/* maintain aspect ratio */
+}
+
+/* base body styles */
+body {
+    /* set font family and fallback */
+  font-family: 'Open Sans', sans-serif;
+  background-color: #ffffff; /* set background color */
+  color: #000000;/* set text color */
+}
+
+/* header container styling */
+header {
+  background-color: #dedede;/* set background color */
+  padding: 1rem 2rem;/* add padding */
+  display: flex;/* display header as flex container */
+  justify-content: space-between; /* justify content horizontally */
+  align-items: center;  /* align items vertically */
+  flex-wrap: wrap;/* wrap elements to next line */
+  
+}
+
+/* main site title styling */
+header h1 {
+  font-size: 1.8rem;/* set font size */
+  color: #000; /* set text color */
+}
+
+
+h1.site-title {
+  color: #000000; /* set text color */
+  font-weight: 600; /* set font weight */
+  font-size: 1.8rem;/* set font size */
+}
+ 
+/* navigation link styles */
+nav a {
+  margin-left: 1rem; /* add margin */
+  text-decoration: none; /* remove text decoration */
+  color: #000;/* set text color */
+  font-weight: 600;/* set font weight */
+  }
+ 
+ nav a:hover,
+ nav a.active {
+    color: #8c0000; /* set hover and active link color */
+}
+
+/* container for auto-swiping background images */
+.auto-swipe {
+  height: 100vh;/* set height */
+  overflow: hidden; /* hide overflow */
+  position: relative;/* set position */
+}
+
+/* styles for background images in swipe animation */
+.auto-swipe img {
+  position: absolute; /* set position */
+   /* take full width and the height */
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* set object fit */
+  animation: slide 24s infinite;  /* animate opacity */
+  opacity: 0;  /* set initial opacity */
+  transition: opacity 1s ease-in-out; /* add transition effect */
+  z-index: 0; /* set z index */
+}
+
+/* animation delays for swipe effect */
+                              /* set animation delay */
+.auto-swipe img:nth-child(1) { animation-delay: 0s; }
+.auto-swipe img:nth-child(2) { animation-delay: 6s; }
+.auto-swipe img:nth-child(3) { animation-delay: 12s; }
+.auto-swipe img:nth-child(4) { animation-delay: 18s; }
+
+/* keyframes for fade-in and fade-out swipe effect */
+@keyframes slide {
+    /* set opacity */
+  0% { opacity: 0; }/* initial state */
+  5% { opacity: 1; } /* fade in */
+  25% { opacity: 1; }/* stay visible */
+  30% { opacity: 0; }/* fade out */
+  100% { opacity: 0; }/* final state */
+}
+
+/* gradient overlay for better text visibility */
+.auto-swipe::before {
+  content: '';/* set content */
+  position: absolute; /* set position */
+  /* set top and left positions */
+  top: 0;
+  left: 0;
+  /* take full width and height */
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(50, 50, 50, 0.701), rgba(155, 155, 155, 0.345));
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* main heading container styles */
+.main {
+  position: absolute;
+  top: 30%;
+  left: 2rem;
+  z-index: 2;
+  text-align: left;
+}
+
+/* main heading styles */
+.main h1 {
+  font-size: 3rem;
+  color: #ffffff;
+  font-weight: 600;
+  margin: 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 3px solid #c00000;
+  display: inline-block;
+  line-height: 1.3;
+}
+
+/* section container styles */
+.section {
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* section heading styles */
+.section h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #000;
+  border-bottom: 2px solid #8c0000;
+  padding-bottom: 0.5rem;
+  display: inline-block;
+}
+
+/* container for rotating packages */
+.rotate {
+  overflow: hidden;
+}
+
+/* track for horizontally rotating package cards */
+.rotate-track {
+  display: flex;
+  width: 300%;
+  animation: slidePackages 25s infinite;
+  gap: 2rem;
+}
+/* keyframes for horizontal slide animation */
+@keyframes slidePackages {
+  0% { transform: translateX(0); }
+  33.33% { transform: translateX(-33.33%); }
+  66.66% { transform: translateX(-66.66%); }
+  100% { transform: translateX(0%); }
+}
+
+/* individual package card styles */
+.package-card {
+  width: 100%;
+  background: #fafafa;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  padding: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+/* image styles inside package card */
+.package-card img {
+  width: 35%;
+  height: 250px;
+  object-fit: cover;
+  margin-right: 1rem;
+}
+
+/* text content area inside package card */
+.package-card .package-info {
+  width: 70%;
+}
+/* package title styles */
+.package-card h3 {
+  font-size: 1.5rem;
+  color: #8c0000;
+  margin-bottom: 0.5rem;
+}
+
+/* package description text */
+.package-card p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+/* price container */
+.package-card .price {
+  margin-bottom: 1rem;
+}
+
+/* small "from" label */
+.price .from {
+  font-size: 0.85rem;
+  color: #333;
+}
+
+/* main price amount */
+.price .amount {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #000;
+  display: block;
+}
+
+/* per person label */
+.price .per-person {
+  font-size: 0.8rem;
+  color: #444;
+}
+
+/* button for more details */
+.package-card .details-button {
+  align-self: flex-start;
+  background-color: #152651;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.7rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+/* hover state for details button */
+.details-button:hover {
+  background-color: #29388a;
+}
+
+/* container for swipe indicators */
+.rotate-indicators {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  gap: 0.5rem;
+}
+
+/* individual indicator styles */
+.rotate-indicators span {
+  width: 12px;
+  height: 12px;
+  background-color: #ccc;
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+}
+
+/* active state for current indicator */
+.rotate-indicators .active {
+  background-color: #8c0000;
+}
+
+/* footer container styles */
+footer {
+  background-color: #111;
+  color: #fff;
+  padding: 3rem 1rem 1rem;
+}
+
+/* footer grid layout */
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* footer heading styles */
+.footer-column h3,
+.footer-column h4 {
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+/* footer paragraph styles */
+.footer-column p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* list styling in footer */
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+
+/* list item spacing */
+.footer-column ul li {
+  margin-bottom: 0.5rem;
+}
+
+/* footer links */
+.footer-column ul li a {
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+/* footer link hover effect */
+.footer-column ul li a:hover {
+  color: #e63946;
+}
+
+/* container for social media icons */
+.social-icons a {
+  margin-right: 0.5rem;
+  display: inline-block;
+}
+
+/* icon styles with filter and hover effect */
+.social-icons img {
+  width: 24px;
+  height: 24px;
+  filter: invert(100%) grayscale(100%);
+  transition: transform 0.3s ease;
+}
+
+
+.social-icons img:hover {
+  transform: scale(1.2);
+}
+
+/* footer copyright and end section */
+.footer-end {
+  text-align: center;
+  padding-top: 2rem;
+  margin-top: 2rem;
+  color: #aaa;
+  font-size: 0.9rem;
+  border-top: 1px solid #333;
+}
+
+/* responsive styles for tablet screens */
+@media screen and (max-width: 768px) {
+  .auto-swipe {
+    height: 60vh;
+  }
+
+  .main h1 {
+    font-size: 3.2vw;
+    text-align: center;
+  }
+
+  .rotate-track {
+    width: 300%;
+  }
+
+  .package-card {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .package-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
+
+  .package-card .package-info {
+    width: 100%;
+  }
+
+  .section h2 {
+    font-size: 1.5rem;
+  }
+
+
+}
+
+@media screen and (max-width: 480px) {
+  .main h1 {
+    font-size: 1.4rem;
+  }
+
+  .section h2 {
+    font-size: 1.3rem;
+  }
+
+  .package-card h3 {
+    font-size: 1rem;
+  }
+
+  .price .amount {
+    font-size: 1.2rem;
+  }
+}
